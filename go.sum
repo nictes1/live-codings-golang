@@ -1,3 +1,5 @@
+github.com/bootcamp-go/live-codings/go-web/functional-tests v0.0.0-20220527133113-009e341ca73d h1:bRnNi5Psm/YQw13Jj+9t2ZuYadMhpskz2aNn5wxYn5s=
+github.com/bootcamp-go/live-codings/go-web/functional-tests v0.0.0-20220527133113-009e341ca73d/go.mod h1:nO3Zuri/lachOVT/qfTS8/CTJzVwRFN0diUksta39bU=
 github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ33E=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

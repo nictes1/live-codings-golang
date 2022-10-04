@@ -1,8 +1,11 @@
-module github.com/nictes1/codigo-clases
+module github.com/nictes1/live-codings-golang
 
 go 1.18
 
-require github.com/gin-gonic/gin v1.8.1
+require (
+	github.com/bootcamp-go/live-codings/go-web/functional-tests v0.0.0-20220527133113-009e341ca73d
+	github.com/gin-gonic/gin v1.8.1
+)
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect

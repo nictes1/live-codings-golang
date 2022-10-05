@@ -1,11 +1,14 @@
 package handler
 
 import (
+	"os"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/nictes1/live-codings-golang/go-web/clase04/internal/products"
 )
+
+// Validacion de datos
 
 type request struct {
 	Name  string  `json:"nombre"`
@@ -27,7 +30,7 @@ func NewProduct(p products.Service) *Product {
 func (c *Product) GetAll() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		token := ctx.Request.Header.Get("token")
-		if token != "123456" {
+		if token != os.Getenv("TOKEN") {
 			ctx.JSON(401, gin.H{
 				"error": "token inválido",
 			})
@@ -48,7 +51,7 @@ func (c *Product) GetAll() gin.HandlerFunc {
 func (c *Product) Store() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		token := ctx.Request.Header.Get("token")
-		if token != "123456" {
+		if token != os.Getenv("TOKEN") {
 			ctx.JSON(401, gin.H{"error": "token inválido"})
 			return
 		}
@@ -71,7 +74,7 @@ func (c *Product) Store() gin.HandlerFunc {
 func (c *Product) Update() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		token := ctx.GetHeader("token")
-		if token != "123456" {
+		if token != os.Getenv("TOKEN") {
 			ctx.JSON(401, gin.H{"error": "token inválido"})
 			return
 		}

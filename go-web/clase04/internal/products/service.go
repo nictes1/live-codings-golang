@@ -17,12 +17,12 @@ func NewService(r Repository) Service {
 }
 
 func (s *service) GetAll() ([]Product, error) {
-	ps, err := s.repository.GetAll()
+	ps, err := s.repository.GetAll() //llamamos al repository y esperamos su reespuesya
 	if err != nil {
-		return nil, err
+		return nil, err  //procesamos
 	}
 
-	return ps, nil
+	return ps, nil // lo va a recibir el handler
 }
 
 func (s *service) Store(nombre, tipo string, cantidad int, precio float64) (Product, error) {
@@ -45,3 +45,4 @@ func (s *service) Update(id int, name, productType string, count int, price floa
 
 	return s.repository.Update(id, name, productType, count, price)
 }
+

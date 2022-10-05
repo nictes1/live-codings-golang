@@ -1,3 +1,30 @@
 [
-  
+  {
+    "id": 1,
+    "nombre": "Televisor LCD",
+    "tipo": "electrodomesticos",
+    "cantidad": 5,
+    "precio": 20000
+  },
+  {
+    "id": 2,
+    "nombre": "Heladera",
+    "tipo": "electrodomesticos",
+    "cantidad": 1,
+    "precio": 2000
+  },
+  {
+    "id": 1,
+    "nombre": "Playadito",
+    "tipo": "7575",
+    "cantidad": 6,
+    "precio": 1000
+  },
+  {
+    "id": 1,
+    "nombre": "Mouse",
+    "tipo": "7287828727",
+    "cantidad": 26,
+    "precio": 2
+  }
 ]

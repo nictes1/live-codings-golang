@@ -1,0 +1,230 @@
+basePath: /api/v1
+definitions:
+  handler.ProductRequest:
+    properties:
+      cantidad:
+        type: integer
+      nombre:
+        type: string
+      precio:
+        type: number
+      tipo:
+        type: string
+    required:
+    - cantidad
+    - nombre
+    - precio
+    - tipo
+    type: object
+  handler.ProductRequestPatch:
+    properties:
+      nombre:
+        type: string
+    required:
+    - nombre
+    type: object
+  web.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      error:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support Digital House
+    url: http://www.swagger.io/support
+  description: This is a simple API development by Digital House's team.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://developers.mercadolibre.com.ar/es_ar/terminos-y-condiciones
+  title: Bootcamp Go Wave 6 - API
+  version: "1.0"
+paths:
+  /products:
+    get:
+      parameters:
+      - description: token
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List products
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not found products
+          schema:
+            $ref: '#/definitions/web.Response'
+        "500":
+          description: 'Internal server error '
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Show list products
+      tags:
+      - Products
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: token requerido
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: Product to Store
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/handler.ProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "409":
+          description: Conflict
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Store product
+      tags:
+      - Products
+  /products/{id}:
+    delete:
+      parameters:
+      - description: Product id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Token
+        in: header
+        name: token
+        required: true
+        type: string
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Delete product
+      tags:
+      - Products
+    patch:
+      consumes:
+      - application/json
+      description: This endpoint update field name from an product
+      parameters:
+      - description: Token header
+        in: header
+        name: token
+        required: true
+        type: string
+      - description: Product Id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Product name
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: '#/definitions/handler.ProductRequestPatch'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Update name product
+      tags:
+      - Products
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Id product
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Token
+        in: header
+        name: token
+        type: string
+      - description: Product to update
+        in: body
+        name: product
+        required: true
+        schema:
+          $ref: '#/definitions/handler.ProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/web.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/web.Response'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/web.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/web.Response'
+      summary: Update product
+      tags:
+      - Products
+swagger: "2.0"

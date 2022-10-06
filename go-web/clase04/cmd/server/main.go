@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"github.com/nictes1/live-codings-golang/go-web/clase04/cmd/server/handler"
@@ -10,7 +12,10 @@ import (
 
 func main() {
 
-	_ = godotenv.Load()
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("error al intentar cargar archivo .env")
+	}
 	db := store.New(store.FileType, "./products.json")
 	repo := products.NewRepository(db)
 	service := products.NewService(repo)
